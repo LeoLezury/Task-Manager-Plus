@@ -1,0 +1,84 @@
+﻿<Window x:Class="TaskMgr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskMgr"
+        mc:Ignorable="d"
+        Title="Task Manager+" Height="500" Width="700"
+        ResizeMode="NoResize">
+    <Grid>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="Processes">
+                <Grid Background="Azure">
+                    <ListView Margin="10,10,10,50" Name="Processes" Background="Azure" SelectionChanged="Processes_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="PID" Width="50" DisplayMemberBinding="{Binding PID}" />
+                                <GridViewColumn Header="Parent PID" Width="100" DisplayMemberBinding="{Binding PPID}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="More Info" Background="LightBlue" Margin="10,385,590,0" VerticalAlignment="Top" Click="MoreInfo_Click"/>
+                    <Button Content="Kill" Background="LightBlue" Margin="110,385,530,0" VerticalAlignment="Top" Click="Kill_Click"/>
+                    <Button Content="Suspend" Background="LightBlue" Margin="170,385,450,0" VerticalAlignment="Top" Click="Suspend_Click"/>
+                    <Button Content="Resume" Background="LightBlue" Margin="250,385,370,0" VerticalAlignment="Top" Click="Resume_Click"/>
+                    <Button Content="Set critical" Background="LightBlue" Margin="330,385,260,0" VerticalAlignment="Top" Click="sCritical_Click"/>
+                    <Button Content="Cancel critical" Background="LightBlue" Margin="440,385,130,0" VerticalAlignment="Top" Click="cCritical_Click"/>
+                    <Button Content="Location" Background="LightBlue" Margin="570,385,45,0" VerticalAlignment="Top" Click="Location_Click"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Services">
+                <Grid Background="Azure">
+                    <ListView Margin="10,10,10,50" Name="Services" Background="Azure" SelectionChanged="Services_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Status" Width="150" DisplayMemberBinding="{Binding Status}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Start" Background="LightBlue" Margin="10,385,614,0" VerticalAlignment="Top" Click="Start_Click"/>
+                    <Button Content="Stop" Background="LightBlue" Margin="90,385,550,0" VerticalAlignment="Top" Click="Stop_Click"/>
+                    <Button Content="Restart" Background="LightBlue" Margin="150,385,470,0" VerticalAlignment="Top" Click="Restart_Click"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Startups">
+                <Grid Background="Azure">
+                    <ListView Margin="10,10,10,50" Name="Startups" Background="Azure" SelectionChanged="Startups_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Command" Width="300" DisplayMemberBinding="{Binding Command}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Delete" Background="LightBlue" Margin="10,385,614,0" VerticalAlignment="Top" Click="Delete_Click"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Run">
+                <Grid Background="Azure">
+                    <TextBox Name="filename" Background="Azure" HorizontalAlignment="Center" Height="365" Margin="0,10,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="670"/>
+                    <Button Content="Run" Background="LightBlue" HorizontalAlignment="Left" Margin="510,385,0,0" VerticalAlignment="Top" Width="160" Click="Run_Click"/>
+                    <Button Content="Browse" Background="LightBlue" HorizontalAlignment="Left" Margin="340,385,0,0" VerticalAlignment="Top" Width="160"  Click="Browse_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="About">
+                <Grid Background="Azure">
+                    <TextBlock Name ="About" TextWrapping = "Wrap" Text="-=About Task Manager+=-&#x000A;This software is coded by Leo.&#x000A;Released in XYStudio.&#x000A;Thanks to: rsodxd_, LiChen, XiaoYuan151" Height="200" Width="650" FontSize="30" FontWeight="Light" Foreground="#FF1B988F" Cursor="IBeam" MouseLeftButtonUp="EasterEgg">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Azure"/>
+                                <GradientStop Color="DeepSkyBlue" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
